@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ScrollView, Text, TextInput, View, Button, StyleSheet } from 'react-native';
 
-import { login } from './../actions/auth';
+import { login } from '../actions/auth';
 
 class Login extends Component {
     constructor(props) {
@@ -55,13 +55,6 @@ class Login extends Component {
         );
     }
 }
-const styles = StyleSheet.create({
-    textInput: {
-        height: 80,
-        fontSize: 30,
-        backgroundColor: '#FFF'
-    }
-});
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -77,3 +70,11 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+const styles = StyleSheet.create({
+    textInput: {
+        height: 80,
+        fontSize: 30,
+        backgroundColor: '#FFF'
+    }
+});

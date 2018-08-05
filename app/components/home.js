@@ -2,20 +2,21 @@ import React, { Component } from 'react';
 import { StyleSheet, FlatList, View, Text, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 
-import { getData } from './../actions/data';
+import { getData } from '../actions/data';
 
 class Home extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+    
         };
 
         this.renderItem = this.renderItem.bind(this);
     }
 
     componentDidMount() {
-        this.props.getData(); //call our action
+        this.props.getData();
     }
 
     render() {
@@ -42,10 +43,10 @@ class Home extends Component {
         return (
             <View style={styles.row}>
                 <Text style={styles.title}>
-                    {(parseInt(index) + 1)}{". "}{item.title}
+                    {(parseInt(index) + 1)}{". "}{item.day}
                 </Text>
-                <Text style={styles.description}>
-                    {item.description}
+                <Text style={styles.title}>
+                    {item.desc}
                 </Text>
             </View>
         )
