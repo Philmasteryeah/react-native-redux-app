@@ -1,19 +1,21 @@
+import { LOGIN, LOGOUT } from "../actions/auth"
+
 const defaultState = {
     isLoggedIn: false,
     username: '',
     password: ''
 };
- 
-export default function reducer(state = defaultState, action) {
+
+const authReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case 'LOGIN': 
-            return Object.assign({}, state, { 
+        case LOGIN:
+            return Object.assign({}, state, {
                 isLoggedIn: true,
                 username: action.username,
                 password: action.password
             });
-        case 'LOGOUT':
-            return Object.assign({}, state, { 
+        case LOGOUT:
+            return Object.assign({}, state, {
                 isLoggedIn: false,
                 username: '',
                 password: ''
@@ -22,3 +24,5 @@ export default function reducer(state = defaultState, action) {
             return state;
     }
 }
+
+export default authReducer;
