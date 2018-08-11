@@ -12,7 +12,7 @@ export const getData = () => {
         // }, 2000);
 
         // remote
-        fetch('http://192.168.0.106:9090/test/meals',
+        fetch('http://192.168.0.106:9090/rest/meals',
             {
                 headers: new Headers({
                     'Authorization': 'Basic ' + btoa('sa:test'), // base 64 TODO from inputs

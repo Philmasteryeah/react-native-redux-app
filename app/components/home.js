@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { StyleSheet, FlatList, View, Text, ActivityIndicator } from 'react-native';
+import { StyleSheet, FlatList, View, Text, ActivityIndicator, Image } from 'react-native';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import { getData } from '../actions/data';
+import * as actions from "../actions/data";
 
 class Home extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-    
+
         };
 
         this.renderItem = this.renderItem.bind(this);
@@ -43,29 +45,35 @@ class Home extends Component {
         return (
             <View style={styles.row}>
                 <Text style={styles.title}>
-                    {(parseInt(index) + 1)}{". "}{item.day}
+                    {(parseInt(index) + 1)}{". "}{item.dayName}
                 </Text>
                 <Text style={styles.title}>
                     {item.desc}
                 </Text>
+                <Image
+                    style={{ width: 66, height: 58 }}
+                    source={{ uri: `data:image/png;base64,${item.imageBase64}` }} />
             </View>
         )
     }
 };
 
-function mapStateToProps(state, props) {
+const mapStateToProps = (state, props) => {
     return {
         loading: state.data.loading,
         data: state.data.data
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        getData: () => { dispatch(getData()); }
-    }
-}
+// function mapDispatchToProps(dispatch) {
+//     return {
+//         getData: () => { dispatch(getData()); }
+//     }
+// }
 
+const mapDispatchToProps = (dispatch) => (
+    bindActionCreators(actions, dispatch)
+)
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 const styles = StyleSheet.create({
